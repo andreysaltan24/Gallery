@@ -9,7 +9,7 @@ export const getAlbums = () => {
   });
 };
 
-export const getPhoto = (id = '1') => {
+export const getPhotosList = (id = '1') => {
   return fetch(`${URL}/photos?albumId=${id}`).then((res) => {
     if (res.ok) {
       return res.json();

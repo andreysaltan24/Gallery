@@ -1,4 +1,4 @@
-import { getAlbums, getPhoto } from './api.js';
+import { getAlbums, getPhotosList } from './api.js';
 
 const albumsList = document.querySelector('.albums__list');
 const albumsPhoto = document.querySelector('.albums__photo');
@@ -10,16 +10,13 @@ renderPhotoFromAlbum();
 
 function initializationAlbums() {
   getAlbums()
-    .then((album) => {
-      renderList(album);
-    })
+    .then(renderList)
     .catch(alertError);
 }
 
 function renderPhotoFromAlbum(id) {
-  getPhoto(id).then((photo) => {
-    renderPhotoList(photo);
-  });
+  getPhotosList(id)
+  .then(renderPhotoList);
 }
 
 function onAlbumsListClick(e) {
@@ -32,12 +29,12 @@ function onAlbumsListClick(e) {
 }
 
 function renderList(albumEl) {
-  const addList = albumEl.map(renderListHTML).join('');
+  const addList = albumEl.map(generateListHTML).join('');
 
   albumsList.innerHTML = addList;
 }
 
-function renderListHTML(listItem) {
+function generateListHTML(listItem) {
   return `
           <div class='list__item' data-id=${listItem.id}>
               ${listItem.title} 

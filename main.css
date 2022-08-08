@@ -1,0 +1,19 @@
+.app {
+    display: flex;
+    justify-content: space-between;
+  }
+  .albums__photo {
+    width: 50%;
+  }
+  .list__item {
+    cursor: pointer;
+    color: goldenrod;
+  }
+  .list__item:hover {
+    color: blue;
+  }
+  img {
+    width: 100px;
+    height: 100px;
+  }
+  
